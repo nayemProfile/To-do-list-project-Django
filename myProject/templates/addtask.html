@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Task List</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+
+        .add-task-form input[type="text"] {
+            width: calc(100% - 120px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .add-task-form input[type="submit"] {
+            width: 100px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .add-task-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    {% include 'base.html' %}
+    <div class="container">
+        <h1>Add To-Do Task</h1>
+        <form class="add-task-form" action="{% url 'addTask' %}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% block content %}
+<div class="navbar">
+    <a href="{% url 'homePage' %}">Home</a>
+    <a href="{% url 'addTaskCatagoriz' %}">Categorize</a>
+    <a href="{% url 'addTask' %}">Add Task</a>
+    <a href="{% url 'viewTask' %}">View Task</a>
+    <a href="{% url 'todayTask' %}">Today Task</a>
+    <a href="{% url 'signOut' %}">LogOut</a>
+
+        <form action="{% url 'search' %}" class="search" method="get">
+          <input type="text" placeholder="Search.." name="search" class="searcg_input">
+          <button type="submit" class = "search_button">Search</button>
+        </form>
+</div>
+{% endblock %}

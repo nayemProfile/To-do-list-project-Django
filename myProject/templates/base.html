@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Task List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            background-color: #007bff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        .navbar a:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .task-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+        }
+
+        .task-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .task-item h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .task-item p {
+            margin: 0;
+            color: #666;
+        }
+
+        .add-task-form {
+            margin-top: 20px;
+        }
+
+        .add-task-form input[type="text"] {
+            width: calc(100% - 120px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .add-task-form input[type="submit"] {
+            width: 100px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .add-task-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a.edit, a.delete, a.status {
+            padding: 4px 7px;
+            border: 1px solid #726b6b;
+            border-radius: 4px;
+            margin: 5px 7px;
+            background: #6b5ce5;
+            color: wheat;
+            text-decoration: none;
+        }
+        a.eidt{
+            background-color: #45a049;
+            color: #0056b3;
+        }
+        a.delete{
+            background-color: #726b6b;
+            color: white;
+            
+        }
+        a.status{
+            background-color: #4caf50;
+            color:black;
+        }
+        .task-item h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+
+        .topnav .search-container {
+            float: right;
+          }
+          
+          .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+          }
+          
+          .topnav .search-container button {
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+          }
+
+          form.search {
+            width: 50%;
+            float: right;
+        }
+        .searcg_input[type="text"] {
+            padding: 5px;
+            margin: -6px;
+        }
+        button.search_button {
+            padding: 5px;
+            margin-top: -6px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+{% include 'navbar.html' %}
+</body>
+</html>

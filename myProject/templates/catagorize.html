@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Task List</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+
+        .addTaskCatagoriz input[type="text"] {
+            width: calc(100% - 120px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .addTaskCatagoriz input[type="submit"] {
+            width: 110px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .addTaskCatagoriz input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .task-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd9d9;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    {% include 'base.html' %}
+    <div class="container">
+        <h1>Add Task Categorize</h1>
+        <form class="addTaskCatagoriz" action="{% url 'addTaskCatagoriz' %}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type = 'submit' value="Add Categorize">
+        </form>
+    </div>
+
+    <div class="container">
+        <h1>Categorize List</h1>
+        <ul class="task-list">
+            {% for c in catagorize %}
+            <li class="task-item">
+                <h3>{{ c.catagori_title }}
+                    <a href="{% url 'editCatagoriz' c.id %}" class="edit" style="float: right;">Edit</a>
+                    <a href="{% url 'deleteCatagoriz' c.id %}" class="delete" style="float: right;">Delete</a>
+                </h3>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Task List</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+
+        .addTaskCatagoriz input[type="text"] {
+            width: calc(100% - 120px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .task-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd9d9;
+            border-left: 4px solid #007bff;
+        }
+        .addTaskCatagoriz input[type="submit"] {
+            width: 110px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .addTaskCatagoriz input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        p.task-p {
+            padding: 8px !important;
+            border: 1px solid #ebebeb !important;
+            margin-top: 5px !important;
+        }
+        .w3-left {
+            float: left!important
+        }
+        
+        .w3-right {
+            float: right!important
+        }
+        
+        .w3-button:hover {
+            color: #000!important;
+            background-color: #ccc!important
+        }
+        
+        .w3-transparent,.w3-hover-none:hover {
+            background-color: transparent!important
+        }
+        
+        .w3-hover-none:hover {
+            box-shadow: none!important
+        }
+        
+        /* Colors */
+        .w3-amber,.w3-hover-amber:hover {
+            color: #000!important;
+            background-color: #ffc107!important
+        }
+        
+        .w3-aqua,.w3-hover-aqua:hover {
+            color: #000!important;
+            background-color: #00ffff!important
+        }
+        
+        .w3-blue,.w3-hover-blue:hover {
+            color: #fff!important;
+            background-color: #2196F3!important
+        }
+        b {
+            padding: 5px 0px;
+            background: black;
+            color: wheat;
+            padding: 6px 10px;
+            border: navajowhite;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Task List</title>
+    <!-- Your CSS styles here -->
+</head>
+<body>
+    {% include 'base.html' %}
+    <div class="container">
+        <h1>Today's Task List</h1>
+
+        <ul class="task-list">
+            {% for t in today_tasks %}
+            <li class="task-item">
+                <h3>{{ t.task_title }}</h3>
+                <p class="task-p"><strong>Discreption: </strong>{{ t.task_descreption}}</p>
+                <p class="task-p"><strong>Categorize: </strong>{{ t.task_categorize}}</p>
+                <p class="task-p"><strong>Priroty: </strong>{{ t.task_priroty}}</p>
+                <p class="task-p"><strong>Status: </strong>
+                {% if t.task_status %}
+                
+                    Completed
+                {% else %}
+                    <strong style="background-color: red; color:white; padding:6px">Not Complete</strong>
+                {% endif %}</p>
+                
+                <p class="task-p"><strong>Date/Time: </strong>{{ t.task_date}}</p>
+                <div>
+                    <a href="{% url 'editTask' t.id %}" class="edit">Edit</a>
+                    <a href="{% url 'deleteTask' t.id %}" class="delete">Delete</a>
+                    {% if not t.task_status %}
+                    <a href="{% url 'taskStatus' t.id %}" class="btn btn-success">Complete Task</a>
+                    {% endif %}
+            
+                </div>
+
+            
+            </li>
+            {% empty %}
+            <li>No tasks for today.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
